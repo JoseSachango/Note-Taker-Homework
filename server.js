@@ -16,3 +16,9 @@ app.use(express.static("public"))
 app.get("/",function(request,response){
     response.sendFile(path.join(__dirname,"/public/assets/index.html"))
 });
+
+
+
+app.listen(PORT,funciton(){
+    console.log("Server up and running")
+})
