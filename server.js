@@ -14,11 +14,11 @@ app.use(express.static("public"))
 
 //html Routes
 app.get("/",function(request,response){
-    response.sendFile(path.join(__dirname,"/public/assets/index.html"))
+    response.sendFile(path.join(__dirname,"./public/assets/index.html"))
 });
 
 
 
-app.listen(PORT,funciton(){
+app.listen(PORT,function(){
     console.log("Server up and running")
 })
