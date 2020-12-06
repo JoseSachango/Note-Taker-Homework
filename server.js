@@ -13,6 +13,6 @@ app.use(express.static("public"))
 
 
 //html Routes
-app.get("/index.html",function(request,response){
+app.get("/",function(request,response){
     response.sendFile(path.join(__dirname,"/public/assets/index.html"))
 });
