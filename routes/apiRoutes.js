@@ -5,7 +5,7 @@ var notesArray = []
 
 //api routes
 
-router.post("/api/notes",function(request,response){
+router1.post("/api/notes",function(request,response){
 
     notesArray.push(request.body)
 
@@ -17,7 +17,7 @@ router.post("/api/notes",function(request,response){
 
 });
 
-router.get("/api/notes",function(request,response){
+router1.get("/api/notes",function(request,response){
 
 })
 
