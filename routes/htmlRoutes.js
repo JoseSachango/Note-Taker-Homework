@@ -1,5 +1,5 @@
 const router2 = require("express").Router()
-
+var path  = require("path")
 
 //html Routes
 router2.get("/",function(request,response){
