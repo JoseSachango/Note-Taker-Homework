@@ -20,6 +20,7 @@ $("#saveNote").on("click",function(){
 
     $.post("/api/notes",noteData).then((response)=>{
         console.log(response)
+        console.log("The post was sent and the response has been recieved.")
     })
 
 
