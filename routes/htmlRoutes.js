@@ -3,15 +3,15 @@ var path  = require("path")
 
 //html Routes
 router2.get("/",function(request,response){
-    response.sendFile(path.join(__dirname,"../public/assets/index.html"))
+    response.sendFile(path.join(__dirname,"../public/index.html"))
 });
 
 router2.get("/notes",function(request,response){
-    response.sendFile(path.join(__dirname,"../public/assets/notes.html"))
+    response.sendFile(path.join(__dirname,"../public/notes.html"))
 });
 
 router2.get("*",function(request,response){
-    response.sendFile(path.join(__dirname,"../public/assets/index.html"))
+    response.sendFile(path.join(__dirname,"../public/index.html"))
 });
 
 
