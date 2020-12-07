@@ -1,5 +1,6 @@
 const router1 = require("express").Router();
 const fs = require("fs");
+const path = require("path")
 
 var notesArray = []
 
@@ -11,7 +12,7 @@ router1.post("/notes",function(request,response){
     console.log("The request.body is the following: ")
     console.log(request.body)
 
-     fs.writeFile("../data/db.json",JSON.stringify(notesArray),(err)=>console.log(err))
+     fs.writeFile(path.join(__dirname,"./../data/db.json"),JSON.stringify(notesArray),(err)=>console.log(err))
 
     response.json(request.body)
 
@@ -19,8 +20,20 @@ router1.post("/notes",function(request,response){
 
 });
 
-router1.get("/notes",function(request,response){
+router1.get("/notesArray",function(request,response){
 
+    fs.readFile("./../data/db.json",function(err,data){
+
+        response.writeHead(200,{"Content-type":"text/html"})
+
+        //response.json("Data testing testing")
+        response.end("Data testing testing")
+        
+
+        console.log("A get request to the /notes endpoint was made. The data is the following: ")
+        //console.log(data)
+
+    })
 })
 
 module.exports = router1;
