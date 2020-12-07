@@ -4,18 +4,17 @@ var path  = require("path")
 var app = express()
 
 
-var PORT = process.env.PORT || 3003;
+var PORT = process.env.PORT || 3005;
 
 //middleware
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 app.use(express.static("public"))
 
+app.use("/",require("./routes/htmlRoutes"))
+app.use("/api",require("./routes/apiRoutes"))
 
-//html Routes
-app.get("/",function(request,response){
-    response.sendFile(path.join(__dirname,"./public/assets/index.html"))
-});
+
 
 
 

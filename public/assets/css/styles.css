@@ -15,20 +15,20 @@ html, body {
   cursor: pointer;
 }
 
-.note-textarea, .note-title {
+.note-textarea, .note-title, #noteTitle, #noteTextArea {
   color: #000000;
   width: 100%;
   outline: none;
   border: none;
 }
 
-.note-textarea {
+.note-textarea, #noteTextArea {
   resize: none;
   height: calc(100% - 63px);
   padding-top: 15px;
 }
 
-.note-title {
+.note-title, #noteTitle {
   height: 50px;
   margin-top: 13px;
   font-size: 3rem;
