@@ -1,4 +1,4 @@
-const router = require("express").Router();
+const router1 = require("express").Router();
 const fs = require("fs");
 
 var notesArray = []
@@ -21,4 +21,4 @@ router.get("/api/notes",function(request,response){
 
 })
 
-module.exports = router;
+module.exports = router1;
