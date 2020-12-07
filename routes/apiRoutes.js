@@ -18,5 +18,7 @@ router.post("/api/notes",function(request,response){
 });
 
 router.get("/api/notes",function(request,response){
-    
+
 })
+
+module.exports = router;
