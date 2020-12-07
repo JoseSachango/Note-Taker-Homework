@@ -8,9 +8,10 @@ var notesArray = []
 router1.post("/notes",function(request,response){
 
     notesArray.push(request.body)
+    console.log("The request.body is the following: ")
     console.log(request.body)
 
-     fs.writeFile("../data/db.json",notesArray,(err)=>console.log(err))
+     fs.writeFile("../data/db.json",JSON.stringify(notesArray),(err)=>console.log(err))
 
     response.json(request.body)
 
