@@ -4,27 +4,26 @@ $(document).ready(function(){
     console.log("This is the local storage length: ")
     console.log(localStorage.length)
 
-    var emptyNoteCol = 
-            `<div class="card">
-            <ul class="list-group">
-            </ul>
-        </div>`
+    var emptyNoteCol = `
+            <div class="card">
+              <ul class="list-group">
+              </ul>
+            </div>`;
     
     
-    
+    var comparingHtml = localStorage.getItem("noteColHtml").trim().replace(/\s+/g, " ")==emptyNoteCol.trim().replace(/\s+/g, " ")
     //localStorage.clear()
-    if(localStorage.length===0||localStorage.getItem("noteColHtml")===emptyNoteCol){
+    if(localStorage.length===0 || comparingHtml){
         $("ul").append(`<li id="startingLi" class="list-group-item">No Saved Notes</li>`)
+        
     }else{
-
+        
         $(".col-4").html(localStorage.getItem("noteColHtml"))
+       
+
     }
 
-        
 
-    
-
-    
 
     //Showing the save button when the user inputs to the text area field.
     $("#noteTextArea").on("input",function(){
