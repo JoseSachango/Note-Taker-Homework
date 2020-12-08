@@ -24,16 +24,18 @@ router1.get("/notesArray",function(request,response){
 
     fs.readFile("./../data/db.json",function(err,data){
 
-        response.writeHead(200,{"Content-type":"text/html"})
+        //response.writeHead(200,{"Content-type":"text/html"})
 
         //response.json("Data testing testing")
-        response.end("Data testing testing")
+        //response.end("Data testing testing")
         
 
         console.log("A get request to the /notes endpoint was made. The data is the following: ")
         //console.log(data)
 
     })
+
+    response.json("Data testing testing")
 })
 
 module.exports = router1;

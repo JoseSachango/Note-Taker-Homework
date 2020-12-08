@@ -34,7 +34,7 @@ $(document).ready(function(){
     })
 
     //making a get request for the data in db.json   
-    $.get("/notesArray",function(err,data){
+    $.get("/notesArray",function(data){
         console.log("Trying to hit the notesArray endpoint")
         console.log(data)
         console.log("The statment above is the data returned from the api Route")
