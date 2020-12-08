@@ -42,6 +42,7 @@ router1.delete("/notes/:character",function(request,response){
     fs.readFile(path.join(__dirname,"./../data/db.json"),function(err,data){
 
         var dataRead = JSON.parse(data)
+        
         console.log("This is the dataRead before the splice: ")
         console.log(dataRead)
 

@@ -19,5 +19,5 @@ app.use("/",require("./routes/htmlRoutes.js"))
 
 
 app.listen(PORT,function(){
-    console.log("Server up and running")
+    console.log("Server up and running!")
 })

@@ -2,8 +2,7 @@
 $(document).ready(function(){
 
     
-    console.log("This is the local storage length: ")
-    console.log(localStorage.length)
+    
 
     var emptyNoteCol = `
             <div class="card">
@@ -64,13 +63,10 @@ $(document).ready(function(){
         //saving list item to localstorage
         localStorage.setItem(`${$("#noteTitle").val().trim()}`,$("#noteTextArea").val().trim())
 
-        console.log("The container that holds the lists: ")
-        console.log(localStorage.getItem(`${$("#noteTitle").val().trim()}`))
         //--
     
         $.post("/api/notes",noteData).then((response)=>{
             console.log(response)
-            console.log("The post was sent and the response has been recieved.")
         })
 
       
@@ -90,15 +86,8 @@ $(document).ready(function(){
     //making a get request for the data in db.json   
     $.get("/api/notes",function(data){
 
-        console.log("Trying to hit the notesArray endpoint")
-        console.log(data)
-        console.log("The statment above is the data returned from the api Route")
-
-        console.log("The title data returned from the get request to /api/notesArray is below: ")
         console.log(JSON.parse(data))
 
-
-        
         
     })
 
@@ -109,11 +98,8 @@ $(document).ready(function(){
                 //make a get request to /api/notes to get the array of note objects. 
             if (event.target.getAttribute("class")==="fa fa-trash float-right" ){
 
-                console.log("The event.target.parentNode.childNodes[0].data is the following : ")
-                console.log(event.target.parentNode.childNodes[0].data)
                 //--
                 localStorage.removeItem(event.target.parentNode.childNodes[0].data)
-                
                 //--
 
                
@@ -126,7 +112,6 @@ $(document).ready(function(){
 
                 ).then((data)=>{
 
-                    console.log("The response below was returned after submitting a delete request: ")
                     console.log(data)
 
                 }).catch((err)=>{
@@ -140,15 +125,7 @@ $(document).ready(function(){
 
             else if(event.target.getAttribute("class")==="list-group-item"){
 
-                /*
-                var listItemId = event.target.getAttribute("id")
-                console.log("Target html: ")
-                console.log(event.target.childNodes[0].data)
-
-                console.log("Target id: ")
-                console.log(listItemId)
-                console.log(localStorage.getItem(listItemId))
-                */
+            
 
                 $("#noteTitle").val(event.target.childNodes[0].data)
                 $("#noteTextArea").val(localStorage.getItem(event.target.childNodes[0].data)                                             )
@@ -162,9 +139,7 @@ $(document).ready(function(){
 
              //removing list item from the client
 
-             console.log("What is this below")
-             console.log($(`#${event.target.getAttribute("id")}li`))
-             console.log(`#${event.target.getAttribute("id")}`)
+          
 
 
              $(`#${event.target.getAttribute("id")}li`).remove()
