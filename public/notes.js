@@ -1,6 +1,7 @@
 
 $(document).ready(function(){
 
+    
     console.log("This is the local storage length: ")
     console.log(localStorage.length)
 
@@ -11,7 +12,11 @@ $(document).ready(function(){
             </div>`;
     
     
-    var comparingHtml = localStorage.getItem("noteColHtml").trim().replace(/\s+/g, " ")==emptyNoteCol.trim().replace(/\s+/g, " ")
+    if(localStorage.getItem("noteColHtml")){
+        var comparingHtml = localStorage.getItem("noteColHtml").trim().replace(/\s+/g, " ")==emptyNoteCol.trim().replace(/\s+/g, " ")
+    }else{
+        var comparingHtml = false;
+    }
     //localStorage.clear()
     if(localStorage.length===0 || comparingHtml){
         $("ul").append(`<li id="startingLi" class="list-group-item">No Saved Notes</li>`)
@@ -37,7 +42,7 @@ $(document).ready(function(){
     $("#saveNote").on("click",function(){
         
         var randomNumber = Math.floor(Math.random()*1000)
-        var uniqueId = $("#noteTitle").val().trim()+randomNumber
+        var uniqueId = $("#noteTitle").val().trim().replace(/\s/g,'')+randomNumber
 
         var noteData = {
     
@@ -156,12 +161,16 @@ $(document).ready(function(){
             }
 
              //removing list item from the client
+
+             console.log("What is this below")
+             console.log($(`#${event.target.getAttribute("id")}li`))
+             console.log(`#${event.target.getAttribute("id")}`)
+
+
              $(`#${event.target.getAttribute("id")}li`).remove()
              localStorage.setItem("noteColHtml",$(".col-4").html())
 
-             console.log("What is this below")
-             console.log(`#${event.target.getAttribute("id")}li`)
-             console.log(`#${event.target.getAttribute("id")}`)
+           
 
             
 

@@ -9,14 +9,12 @@ var notesArray = []
 router1.post("/notes",function(request,response){
 
     notesArray.push(request.body)
-    console.log("The request.body is the following: ")
-    console.log(request.body)
+    
 
      fs.writeFile(path.join(__dirname,"./../data/db.json"),JSON.stringify(notesArray),(err)=>console.log(err))
 
     response.json(request.body)
 
-    console.log("The post request was recieved by the router.")
 
 });
 
@@ -30,8 +28,7 @@ router1.get("/notes",(request, response) => {
            
 
             response.end(data)
-            console.log("A get request to the /api/notesArray endpoint was made. The data is the following: ");
-            console.log(data);
+    
 
         });
 
@@ -52,8 +49,7 @@ router1.delete("/notes/:character",function(request,response){
     
             if(chosenId===dataRead[i].title){
                 
-                console.log("we've entered the splice conditional statment")
-                
+
                 dataRead.splice(i,1);
                 
                 fs.writeFile(path.join(__dirname,"./../data/db.json"),JSON.stringify(dataRead),(err)=>console.log(err))
