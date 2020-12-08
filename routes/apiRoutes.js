@@ -20,22 +20,55 @@ router1.post("/notes",function(request,response){
 
 });
 
-router1.get("/notesArray",function(request,response){
+router1.get("/notes",(request, response) => {
 
-    fs.readFile("./../data/db.json",function(err,data){
+        fs.readFile(path.join(__dirname,"./../data/db.json"), function (err, data) {
 
-        //response.writeHead(200,{"Content-type":"text/html"})
+            if(err) throw err;
 
-        //response.json("Data testing testing")
-        //response.end("Data testing testing")
+
+           
+
+            response.end(data)
+            console.log("A get request to the /api/notesArray endpoint was made. The data is the following: ");
+            console.log(data);
+
+        });
+
         
-
-        console.log("A get request to the /notes endpoint was made. The data is the following: ")
-        //console.log(data)
-
     })
 
-    response.json("Data testing testing")
+router1.delete("/notes/:character",function(request,response){
+
+    var chosenId = request.params.character;
+
+    fs.readFile(path.join(__dirname,"./../data/db.json"),function(err,data){
+
+        var dataRead = JSON.parse(data)
+        console.log("This is the dataRead before the splice: ")
+        console.log(dataRead)
+
+        for(let i in dataRead){
+    
+            if(chosenId===dataRead[i].title){
+                
+                console.log("we've entered the splice conditional statment")
+                
+                dataRead.splice(i,1);
+                
+                fs.writeFile(path.join(__dirname,"./../data/db.json"),JSON.stringify(dataRead),(err)=>console.log(err))
+            }
+        }
+
+        console.log("This is the dataRead after the splice: ")
+        console.log(dataRead)
+
+        response.json(dataRead)
+    });
+
+
+
+
 })
 
 module.exports = router1;
